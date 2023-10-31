@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "717231755091",
+    "firebase_url": "https://ecoair-4ab50-default-rtdb.firebaseio.com",
+    "project_id": "ecoair-4ab50",
+    "storage_bucket": "ecoair-4ab50.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:717231755091:android:322432390c4a1f47c01ba6",
+        "android_client_info": {
+          "package_name": "cl.inacap.ecoair"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkqkwlVnCgWutn2JggPJFks2o6d0hHl-Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
