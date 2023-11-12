@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">EcoAir</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="register">Registrarse</string>
+    <string name="email">Email</string>
+    <string name="password">Contraseña</string>
+    <string name="confirm_password">Confirmar contraseña</string>
+    <string name="name">Nombre</string>
+    <string name="or_register">No tienes cuenta? Registrate aqui</string>
+    <string name="or_login">Ya tienes cuenta? Inicia sesión aqui</string>
 </resources>

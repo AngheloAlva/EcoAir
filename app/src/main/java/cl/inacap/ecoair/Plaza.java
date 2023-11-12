@@ -1,32 +1,36 @@
 package cl.inacap.ecoair;
 
-public class Plaza extends Comuna{
-
+public class Plaza {
     private int id;
     private String nombre;
+    private String comuna;
 
-    public Plaza(int id, String nombre) {
-        super(id, nombre);
+    public Plaza(int id, String nombre, String comuna) {
+        this.comuna = comuna;
         this.id = id;
         this.nombre = nombre;
     }
 
-    @Override
+    public String getComuna() {
+        return comuna;
+    }
+
+    public void setComuna(String comuna) {
+        this.comuna = comuna;
+    }
+
     public int getId() {
         return id;
     }
 
-    @Override
     public void setId(int id) {
         this.id = id;
     }
 
-    @Override
     public String getNombre() {
         return nombre;
     }
 
-    @Override
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
