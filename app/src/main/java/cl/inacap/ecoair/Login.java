@@ -1,24 +1,27 @@
 package cl.inacap.ecoair;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private EditText emailEditText;
     private EditText passwordEditText;
-    private Button loginButton;
-    private Button registerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +32,9 @@ public class Login extends AppCompatActivity {
 
         emailEditText = findViewById(R.id.emailEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
-        loginButton = findViewById(R.id.loginButton);
+        Button loginButton = findViewById(R.id.loginButton);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginUser();
-            }
-        });
+        loginButton.setOnClickListener(v -> loginUser());
 
         TextView registerTextView = findViewById(R.id.registerRedirectTextView);
         registerTextView.setOnClickListener(v -> {
@@ -70,11 +68,35 @@ public class Login extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        Intent intent = new Intent(Login.this, Main_user.class);
-                        startActivity(intent);
-                        finish();
+                        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                        // Verificamos el rol del usuario después de iniciar sesión exitosamente
+                        if (firebaseUser != null) {
+                            DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
+                            usersRef.child(firebaseUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    User currentUser = dataSnapshot.getValue(User.class);
+
+                                    Intent intent;
+                                    if (currentUser != null && "admin".equals(currentUser.getRole())) {
+                                        // El usuario es un administrador
+                                        intent = new Intent(Login.this, Main_admin.class);
+                                    } else {
+                                        // El usuario es un usuario normal
+                                        intent = new Intent(Login.this, Main_user.class);
+                                    }
+                                    startActivity(intent);
+                                    finish();
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                    Toast.makeText(Login.this, "Error al leer los datos.", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
                     } else {
-                        Toast.makeText(Login.this, "Error al Iniciar sesion", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Login.this, "Inicio de sesión fallido.", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
@@ -24,7 +26,7 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance(); // Inicializar Firebase Auth
 
         nameEditText = findViewById(R.id.nameEditText);
         emailEditText = findViewById(R.id.emailEditText);
@@ -80,10 +82,24 @@ public class Register extends AppCompatActivity {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        Intent intent = new Intent(Register.this, Main_user.class);
-                        startActivity(intent);
-                        finish();
+                        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+
+                        if (firebaseUser != null) {
+                            String userID = firebaseUser.getUid();
+                            User newUser = new User(name, firebaseUser.getEmail(), "user");
+                            DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
+
+                            usersRef.child(userID).setValue(newUser)
+                                    .addOnSuccessListener(aVoid -> {
+                                        Toast.makeText(Register.this, "Usuario registrado con éxito.", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(Register.this, Main_user.class);
+                                        startActivity(intent);
+                                        finish();
+                                    })
+                                    .addOnFailureListener(e -> {
+                                        Toast.makeText(Register.this, "Fallo al guardar los datos del usuario.", Toast.LENGTH_SHORT).show();
+                                    });
+                        }
                     } else {
                         Toast.makeText(Register.this, "Registro fallado.",
                                 Toast.LENGTH_SHORT).show();
