@@ -13,4 +13,10 @@
     <string name="search_hint">Buscar</string>
     <string name="map">Mapa de plazas</string>
     <string name="plaza_list">Lista de plazas</string>
+    <string name="device_name">Nombre del dispositivo</string>
+    <string name="plaza_name">Nombre de la plaza</string>
+    <string name="device_id">ID del dispositivo</string>
+    <string name="co2">CO2</string>
+    <string name="nox">NOx</string>
+    <string name="save_device">Agregar dispositivo</string>
 </resources>
