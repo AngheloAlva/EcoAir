@@ -6,6 +6,11 @@
     <string name="password">Contraseña</string>
     <string name="confirm_password">Confirmar contraseña</string>
     <string name="name">Nombre</string>
-    <string name="or_register">No tienes cuenta? Registrate aqui</string>
-    <string name="or_login">Ya tienes cuenta? Inicia sesión aqui</string>
+    <string name="or_register">No tienes cuenta?</string>
+    <string name="or_register_here">Registrate aqui</string>
+    <string name="or_login">Ya tienes cuenta?</string>
+    <string name="or_login_here">Inicia sesión aqui</string>
+    <string name="search_hint">Buscar</string>
+    <string name="map">Mapa de plazas</string>
+    <string name="plaza_list">Lista de plazas</string>
 </resources>

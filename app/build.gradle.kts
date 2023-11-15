@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "cl.inacap.ecoair"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "cl.inacap.ecoair"
@@ -32,6 +32,7 @@ android {
 dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
     implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth")
 
     implementation("androidx.cardview:cardview:1.0.0")
 
