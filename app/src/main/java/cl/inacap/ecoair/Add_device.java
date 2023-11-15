@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -29,6 +30,9 @@ public class Add_device extends AppCompatActivity implements OnMapReadyCallback 
                 .findFragmentById(R.id.map);
         assert mapFragment != null;
         mapFragment.getMapAsync((OnMapReadyCallback) this);
+
+        Button saveDeviceButton = findViewById(R.id.saveDeviceButton);
+        saveDeviceButton.setOnClickListener(v -> saveDevice());
     }
 
     public void onMapReady(@NonNull GoogleMap googleMap) {
@@ -49,8 +53,16 @@ public class Add_device extends AppCompatActivity implements OnMapReadyCallback 
         String co2 = ((EditText) findViewById(R.id.co2EditText)).getText().toString().trim();
         String nox = ((EditText) findViewById(R.id.noxEditText)).getText().toString().trim();
 
-        int co2Value = Integer.parseInt(co2); // Integer.parseInt("123") -> 123 (int)
-        int noxValue = Integer.parseInt(nox);
+        int co2Value, noxValue;
+
+        try {
+            co2Value = Integer.parseInt(co2); // Integer.parseInt("123") -> 123 (int)
+            noxValue = Integer.parseInt(nox);
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Los valores de CO2 y NOx deben ser números", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
 
         if (selectedLocation != null) {
             double latitude = selectedLocation.latitude;
