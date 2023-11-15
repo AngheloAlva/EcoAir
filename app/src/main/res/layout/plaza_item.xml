@@ -5,13 +5,6 @@
     android:orientation="horizontal"
     android:padding="16dp">
 
-    <ImageView
-        android:id="@+id/imageViewPlaza"
-        android:layout_width="83dp"
-        android:layout_height="88dp"
-        android:contentDescription="@string/plaza_image"
-        android:padding="8dp"
-        android:src="@drawable/ic_plaza" />
 
     <LinearLayout
         android:layout_width="293dp"

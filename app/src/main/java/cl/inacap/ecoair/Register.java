@@ -73,7 +73,7 @@ public class Register extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
-                        Intent intent = new Intent(Register.this, MainActivity.class);
+                        Intent intent = new Intent(Register.this, Main_user.class);
                         startActivity(intent);
                         finish();
                     } else {
