@@ -6,17 +6,17 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <LinearLayout
-        android:id="@+id/plazaListContainer"
-        android:layout_width="360dp"
-        android:layout_height="558dp"
-        android:orientation="vertical"
-        android:padding="16dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvDevices"
+        android:layout_width="354dp"
+        android:layout_height="549dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        android:padding="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.593" />
 
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

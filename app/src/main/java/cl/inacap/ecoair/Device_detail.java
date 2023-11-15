@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class plaza_detail extends AppCompatActivity {
+public class Device_detail extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_plaza_detail);
+        setContentView(R.layout.activity_device_detail);
     }
 }

@@ -26,10 +26,10 @@
             android:name=".Main_admin"
             android:exported="false" />
         <activity
-            android:name=".plaza_detail"
+            android:name=".Device_detail"
             android:exported="false" />
         <activity
-            android:name=".plaza_list"
+            android:name=".Device_list"
             android:exported="false" />
         <activity
             android:name=".Main_user"
