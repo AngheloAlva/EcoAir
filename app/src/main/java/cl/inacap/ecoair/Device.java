@@ -21,6 +21,10 @@ public class Device {
 
     public Device() {}
 
+    public String getDeviceID() {
+        return deviceName + plazaName;
+    }
+
     public String getDeviceName() {
         return deviceName;
     }

@@ -10,4 +10,7 @@
     <color name="bg_100">#F2EFE9</color>
     <color name="bg_200">#e8e5df</color>
     <color name="bg_300">#bfbdb7</color>
+    <color name="green">#00A896</color>
+    <color name="red">#FF3D00</color>
+    <color name="yellow">#FFC400</color>
 </resources>

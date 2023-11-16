@@ -19,4 +19,5 @@
     <string name="co2">CO2</string>
     <string name="nox">NOx</string>
     <string name="save_device">Agregar dispositivo</string>
+    <string name="device_image">Imagen de la plaza</string>
 </resources>

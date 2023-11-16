@@ -19,7 +19,7 @@
         android:textSize="18sp"/>
 
     <TextView
-        android:id="@+id/textViewPlazaState"
+        android:id="@+id/tvAirQuality"
         android:layout_width="wrap_content"
         android:layout_height="34dp"
         android:text="Estado: Bueno"

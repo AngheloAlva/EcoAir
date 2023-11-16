@@ -7,16 +7,62 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/ivDeviceImage"
+            android:layout_width="273dp"
+            android:layout_height="185dp"
+            android:contentDescription="@string/device_image"
+            android:scaleType="centerCrop" />
 
         <TextView
-            android:id="@+id/plazaNameTextView"
+            android:id="@+id/tvDeviceName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Plaza 2"
-        android:textAppearance="?attr/textAppearanceHeadline6"/>
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="10dp"
+            android:text="Nombre del Dispositivo"
+            android:textAppearance="?attr/textAppearanceHeadline6"/>
 
-        <!-- Agregar más TextViews para cada detalle como CO2, Humo, etc. -->
+        <TextView
+            android:id="@+id/tvAirQuality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estado: "
+            android:layout_marginBottom="10dp"
+            android:textAppearance="?attr/textAppearanceBody1"/>
+
+        <TextView
+            android:id="@+id/tvPlazaName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre de la Plaza"
+            android:layout_marginBottom="10dp"
+            android:textAppearance="?attr/textAppearanceBody1"/>
+
+        <TextView
+            android:id="@+id/tvCO2Level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nivel de CO2: XX ppm"
+            android:layout_marginBottom="10dp"
+            android:textAppearance="?attr/textAppearanceBody1"/>
+
+        <TextView
+            android:id="@+id/tvNOxLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nivel de NOx: XX ppm"
+            android:layout_marginBottom="20dp"
+            android:textAppearance="?attr/textAppearanceBody1"/>
+
+        <fragment
+            android:id="@+id/mapFragment"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="262dp" />
 
     </LinearLayout>
 </ScrollView>

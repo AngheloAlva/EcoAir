@@ -1,5 +1,6 @@
 package cl.inacap.ecoair;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,23 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceView
         Glide.with(holder.itemView.getContext())
                 .load(device.getImageUrl())
                 .into(holder.ivDeviceImage);
+
+        String airQualityState = calculateAirQualityState(device.getCo2(), device.getNox());
+        holder.tvAirQuality.setText("Calidad del aire: " + airQualityState);
+
+        if ("Bueno".equals(airQualityState)) {
+            holder.tvAirQuality.setTextColor(holder.itemView.getContext().getResources().getColor(R.color.green));
+        } else if ("Regular".equals(airQualityState)) {
+            holder.tvAirQuality.setTextColor(holder.itemView.getContext().getResources().getColor(R.color.yellow));
+        } else {
+            holder.tvAirQuality.setTextColor(holder.itemView.getContext().getResources().getColor(R.color.red));
+        }
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(holder.itemView.getContext(), Device_detail.class);
+            intent.putExtra("DEVICE_ID", device.getDeviceID());
+            holder.itemView.getContext().startActivity(intent);
+        });
     }
 
     @Override
@@ -42,14 +60,26 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceView
         return devicesList.size();
     }
 
+    private String calculateAirQualityState(int co2, int nox) {
+        if (co2 > 2000 || nox > 100) {
+            return "Mala";
+        } else if (co2 > 1000 || nox > 50) {
+            return "Regular";
+        } else {
+            return "Buena";
+        }
+    }
+
     static class DeviceViewHolder extends RecyclerView.ViewHolder {
         TextView tvDeviceName;
         ImageView ivDeviceImage;
+        TextView tvAirQuality;
 
         public DeviceViewHolder(@NonNull View itemView) {
             super(itemView);
             tvDeviceName = itemView.findViewById(R.id.tvDeviceName);
             ivDeviceImage = itemView.findViewById(R.id.ivDeviceImage);
+            tvAirQuality = itemView.findViewById(R.id.tvAirQuality);
         }
     }
 }
