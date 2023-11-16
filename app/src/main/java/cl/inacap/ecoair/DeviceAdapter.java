@@ -3,10 +3,13 @@ package cl.inacap.ecoair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -29,7 +32,9 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceView
     public void onBindViewHolder(@NonNull DeviceViewHolder holder, int position) {
         Device device = devicesList.get(position);
         holder.tvDeviceName.setText(device.getDeviceName());
-        // Configura otros TextViews con información del dispositivo
+        Glide.with(holder.itemView.getContext())
+                .load(device.getImageUrl())
+                .into(holder.ivDeviceImage);
     }
 
     @Override
@@ -39,11 +44,12 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceView
 
     static class DeviceViewHolder extends RecyclerView.ViewHolder {
         TextView tvDeviceName;
+        ImageView ivDeviceImage;
 
         public DeviceViewHolder(@NonNull View itemView) {
             super(itemView);
             tvDeviceName = itemView.findViewById(R.id.tvDeviceName);
-            // Inicializa otros TextViews aquí
+            ivDeviceImage = itemView.findViewById(R.id.ivDeviceImage);
         }
     }
 }

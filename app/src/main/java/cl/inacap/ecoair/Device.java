@@ -7,14 +7,16 @@ public class Device {
     private double longitude;
     private int co2;
     private int nox;
+    private String imageUrl;
 
-    public Device(String deviceName, String plazaName, double latitude, double longitude, int co2, int nox) {
+    public Device(String deviceName, String plazaName, double latitude, double longitude, int co2, int nox, String imageUrl) {
         this.deviceName = deviceName;
         this.plazaName = plazaName;
         this.latitude = latitude;
         this.longitude = longitude;
         this.co2 = co2;
         this.nox = nox;
+        this.imageUrl = imageUrl;
     }
 
     public Device() {}
@@ -41,5 +43,9 @@ public class Device {
 
     public int getNox() {
         return nox;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 }

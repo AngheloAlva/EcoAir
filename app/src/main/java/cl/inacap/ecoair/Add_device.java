@@ -3,9 +3,13 @@ package cl.inacap.ecoair;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -16,10 +20,16 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class Add_device extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
     private LatLng selectedLocation;
+    private Uri imageUri;
+    private static final int GALLERY_REQUEST_CODE = 1;
+    private ImageView ivDeviceImage;
+    private String imageUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +43,11 @@ public class Add_device extends AppCompatActivity implements OnMapReadyCallback 
 
         Button saveDeviceButton = findViewById(R.id.saveDeviceButton);
         saveDeviceButton.setOnClickListener(v -> saveDevice());
+
+        ivDeviceImage = findViewById(R.id.ivDeviceImage);
+        Button uploadImageButton = findViewById(R.id.btnUploadImage);
+
+        uploadImageButton.setOnClickListener(v -> openGallery());
     }
 
     public void onMapReady(@NonNull GoogleMap googleMap) {
@@ -53,6 +68,11 @@ public class Add_device extends AppCompatActivity implements OnMapReadyCallback 
         String co2 = ((EditText) findViewById(R.id.co2EditText)).getText().toString().trim();
         String nox = ((EditText) findViewById(R.id.noxEditText)).getText().toString().trim();
 
+        if (deviceName.isEmpty() || plazaName.isEmpty() || co2.isEmpty() || nox.isEmpty()) {
+            Toast.makeText(this, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         int co2Value, noxValue;
 
         try {
@@ -64,11 +84,11 @@ public class Add_device extends AppCompatActivity implements OnMapReadyCallback 
         }
 
 
-        if (selectedLocation != null) {
+        if (selectedLocation != null && imageUrl != null) {
             double latitude = selectedLocation.latitude;
             double longitude = selectedLocation.longitude;
 
-            Device device = new Device(deviceName, plazaName, latitude, longitude, co2Value, noxValue);
+            Device device = new Device(deviceName, plazaName, latitude, longitude, co2Value, noxValue, imageUrl);
 
             DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
             String firebaseDeviceID = mDatabase.child("devices").push().getKey();
@@ -83,6 +103,36 @@ public class Add_device extends AppCompatActivity implements OnMapReadyCallback 
                             Toast.makeText(Add_device.this, "Error al agregar dispositivo", Toast.LENGTH_SHORT).show();
                         });
             }
+        }
+    }
+
+    private void openGallery() {
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(galleryIntent, GALLERY_REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == GALLERY_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+            imageUri = data.getData();
+            ivDeviceImage.setImageURI(imageUri);
+            uploadImageToFirebaseStorage();
+        }
+    }
+
+    private void uploadImageToFirebaseStorage() {
+        if (imageUri != null) {
+            StorageReference storageRef = FirebaseStorage.getInstance().getReference("device_images");
+            StorageReference imageRef = storageRef.child(System.currentTimeMillis() + ".jpg");
+
+            imageRef.putFile(imageUri).addOnSuccessListener(taskSnapshot -> {
+                imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                    imageUrl = uri.toString();
+                });
+            }).addOnFailureListener(e -> {
+                Toast.makeText(Add_device.this, "Error al subir imagen: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            });
         }
     }
 }
