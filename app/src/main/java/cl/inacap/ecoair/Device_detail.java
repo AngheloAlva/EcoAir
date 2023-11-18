@@ -87,7 +87,6 @@ public class Device_detail extends AppCompatActivity implements OnMapReadyCallba
         TextView tvCo2 = findViewById(R.id.tvCO2Level);
         TextView tvNox = findViewById(R.id.tvNOxLevel);
         TextView tvAirQuality = findViewById(R.id.tvAirQuality);
-        TextView latLng = findViewById(R.id.latLngTextView);
         String airQualityState = calculateAirQualityState(device.getCo2(), device.getNox());
         tvAirQuality.setText("Calidad del aire: " + airQualityState);
 
@@ -105,9 +104,6 @@ public class Device_detail extends AppCompatActivity implements OnMapReadyCallba
         tvCo2.setText("Nivel de CO2: " + device.getCo2() + " ppm");
         tvNox.setText("Nivel de NOx: " + device.getNox() + " ppm");
 
-        Toast.makeText(this, "Latitud: " + device.getLatitude() + ", Longitud: " + device.getLongitude(), Toast.LENGTH_SHORT).show();
-
-        latLng.setText("Latitud: " + device.getLatitude() + ", Longitud: " + device.getLongitude());
         if (device.getLatitude() != 0 && device.getLongitude() != 0) {
             LatLng deviceLocation = new LatLng(device.getLatitude(), device.getLongitude());
             if (map != null) {

@@ -14,9 +14,15 @@ public class Main_user extends AppCompatActivity {
         setContentView(R.layout.activity_main_user);
 
         LinearLayout btnDeviceList = findViewById(R.id.listButtonContainer);
+        LinearLayout btnMap = findViewById(R.id.mapButtonContainer);
 
         btnDeviceList.setOnClickListener(v -> {
             Intent intent = new Intent(Main_user.this, Device_list.class);
+            startActivity(intent);
+        });
+
+        btnMap.setOnClickListener(v -> {
+            Intent intent = new Intent(Main_user.this, All_devices_map.class);
             startActivity(intent);
         });
     }
