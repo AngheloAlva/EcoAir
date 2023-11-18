@@ -172,15 +172,17 @@ public class Login extends AppCompatActivity {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     User currentUser = dataSnapshot.getValue(User.class);
-
                                     Intent intent;
-                                    if (currentUser != null && "admin".equals(currentUser.getRole())) {
+                                    boolean isAdmin = currentUser != null && "admin".equals(currentUser.getRole());
+
+                                    if (isAdmin) {
                                         // El usuario es un administrador
                                         intent = new Intent(Login.this, Main_admin.class);
                                     } else {
                                         // El usuario es un usuario normal
                                         intent = new Intent(Login.this, Main_user.class);
                                     }
+                                    intent.putExtra("isAdmin", isAdmin);
                                     startActivity(intent);
                                     finish();
                                 }

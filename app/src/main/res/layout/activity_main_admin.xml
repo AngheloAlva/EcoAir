@@ -21,33 +21,76 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="0dp" />
 
-    <ImageButton
+    <LinearLayout
         android:id="@+id/listButton"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp"
         android:layout_width="377dp"
         android:layout_height="170dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/button_style"
-        android:src="@drawable/ic_list_foreground"
         app:layout_constraintDimensionRatio="1"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/searchEditText">
 
-    <ImageButton
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_map_foreground"
+            android:layout_marginEnd="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="35dp"
+            android:textColor="@color/text_100"
+            android:text="@string/map" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp"
         android:id="@+id/mapButton"
         android:layout_width="377dp"
         android:layout_height="170dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/button_style"
-        android:src="@drawable/ic_map_foreground"
         app:layout_constraintDimensionRatio="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listButton" />
+        app:layout_constraintTop_toBottomOf="@+id/listButton">
 
-    <ImageButton
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_list_foreground"
+            android:layout_marginEnd="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="35dp"
+            android:textColor="@color/text_100"
+            android:text="@string/plaza_list" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp"
         android:id="@+id/addButton"
         android:layout_width="377dp"
         android:layout_height="170dp"
@@ -61,6 +104,21 @@
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mapButton"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add_foreground"
+            android:layout_marginEnd="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="35dp"
+            android:textColor="@color/text_100"
+            android:text="@string/add_device" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

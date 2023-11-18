@@ -1,5 +1,6 @@
 package cl.inacap.ecoair;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,15 +13,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
 public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceViewHolder> {
     private final List<Device> devicesList; // Lista de dispositivos para mostrar
+    private final boolean isAdmin;
 
     // Constructor del adaptador
-    public DeviceAdapter(List<Device> devicesList) {
+    public DeviceAdapter(List<Device> devicesList, boolean isAdmin) {
         this.devicesList = devicesList;
+        this.isAdmin = isAdmin;
     }
 
     @NonNull
@@ -41,6 +46,11 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceView
         String airQualityState = calculateAirQualityState(device.getCo2(), device.getNox());
         holder.tvAirQuality.setText("Calidad del aire: " + airQualityState);
 
+        if (isAdmin) {
+            holder.editImageView.setVisibility(View.VISIBLE);
+            holder.deleteImageView.setVisibility(View.VISIBLE);
+        }
+
         if ("Bueno".equals(airQualityState)) {
             holder.tvAirQuality.setTextColor(holder.itemView.getContext().getResources().getColor(R.color.green));
         } else if ("Regular".equals(airQualityState)) {
@@ -53,6 +63,32 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceView
             Intent intent = new Intent(holder.itemView.getContext(), Device_detail.class);
             intent.putExtra("DEVICE_ID", device.getFirebaseKey());
             holder.itemView.getContext().startActivity(intent);
+        });
+
+        holder.editImageView.setOnClickListener(v -> {
+            Intent intent = new Intent(holder.itemView.getContext(), Add_device.class); // TODO: Cambiar a Edit_device
+            intent.putExtra("DEVICE_ID", device.getFirebaseKey());
+            holder.itemView.getContext().startActivity(intent);
+        });
+
+        holder.deleteImageView.setOnClickListener(v -> {
+            new AlertDialog.Builder(holder.itemView.getContext())
+                    .setTitle("Eliminar dispositivo")
+                    .setMessage("¿Está seguro que desea eliminar el dispositivo " + device.getDeviceName() + "?")
+                    .setPositiveButton("Eliminar", (dialog, which) -> {
+                        DatabaseReference devicesRef = FirebaseDatabase.getInstance().getReference("devices");
+                        devicesRef.child(device.getFirebaseKey()).removeValue()
+                                .addOnSuccessListener(aVoid -> {
+                                    Toast.makeText(holder.itemView.getContext(), "Dispositivo eliminado", Toast.LENGTH_LONG).show();
+                                    devicesList.remove(position); // Actualiza tu lista local
+                                    notifyItemRemoved(position); // Notifica al adaptador del cambio
+                                })
+                                .addOnFailureListener(e -> {
+                                    Toast.makeText(holder.itemView.getContext(), "Fallo al eliminar el dispositivo", Toast.LENGTH_LONG).show();
+                                });
+                    })
+                    .setNegativeButton("Cancelar", null)
+                    .show();
         });
     }
 
@@ -75,12 +111,16 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceView
         TextView tvDeviceName;
         ImageView ivDeviceImage;
         TextView tvAirQuality;
+        ImageView editImageView;
+        ImageView deleteImageView;
 
         public DeviceViewHolder(@NonNull View itemView) {
             super(itemView);
             tvDeviceName = itemView.findViewById(R.id.tvDeviceName);
             ivDeviceImage = itemView.findViewById(R.id.ivDeviceImage);
             tvAirQuality = itemView.findViewById(R.id.tvAirQuality);
+            editImageView = itemView.findViewById(R.id.editImageView);
+            deleteImageView = itemView.findViewById(R.id.deleteImageView);
         }
     }
 }

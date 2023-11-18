@@ -6,10 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,11 +15,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.EventListener;
 import java.util.List;
 
 public class Device_list extends AppCompatActivity {
-    private RecyclerView recyclerView;
     private DeviceAdapter adapter;
     private List<Device> devicesList;
 
@@ -32,13 +26,15 @@ public class Device_list extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_list);
 
-        recyclerView = findViewById(R.id.rvDevices);
+        boolean isAdmin = getIntent().getBooleanExtra("isAdmin", false);
+
+        RecyclerView recyclerView = findViewById(R.id.rvDevices);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         devicesList = new ArrayList<>();
 
         fetchDevicesFromFirebase();
 
-        adapter = new DeviceAdapter(devicesList);
+        adapter = new DeviceAdapter(devicesList, isAdmin);
         recyclerView.setAdapter(adapter);
     }
 

@@ -17,6 +17,8 @@ public class Main_admin extends AppCompatActivity {
         ImageButton btnMap = findViewById(R.id.mapButton);
         ImageButton btnEditDevice = findViewById(R.id.listButton);
 
+        boolean isAdmin = getIntent().getBooleanExtra("isAdmin", false);
+
         btnAddDevice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,6 +31,7 @@ public class Main_admin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Main_admin.this, Device_list.class);
+                intent.putExtra("isAdmin", isAdmin);
                 startActivity(intent);
             }
         });

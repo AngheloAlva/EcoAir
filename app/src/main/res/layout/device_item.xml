@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nombre del dispositivo"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tvAirQuality"
@@ -24,5 +24,19 @@
         android:layout_height="34dp"
         android:text="Estado: Bueno"
         android:textAppearance="?attr/textAppearanceListItemSmall" />
+
+    <ImageView
+        android:id="@+id/editImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_edit"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/deleteImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_trash_foreground"
+    android:visibility="gone" />
 
 </LinearLayout>
