@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +32,8 @@ public class Device_detail extends AppCompatActivity implements OnMapReadyCallba
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_detail);
 
+        Button backButton = findViewById(R.id.backButton);
+
         deviceID = getIntent().getStringExtra("DEVICE_ID");
         if (deviceID == null) {
             Toast.makeText(this, "No se encontro el ID del dispositivo", Toast.LENGTH_SHORT).show();
@@ -44,6 +47,8 @@ public class Device_detail extends AppCompatActivity implements OnMapReadyCallba
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
         }
+
+        backButton.setOnClickListener(v -> finish());
     }
 
     @Override

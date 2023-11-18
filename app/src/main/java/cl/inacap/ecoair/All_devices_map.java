@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -28,6 +29,8 @@ public class All_devices_map extends AppCompatActivity implements OnMapReadyCall
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_devices_map);
 
+        Button backButton = findViewById(R.id.backButton);
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.allDevicesMapFragment);
 
@@ -36,6 +39,7 @@ public class All_devices_map extends AppCompatActivity implements OnMapReadyCall
         }
 
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("devices");
+        backButton.setOnClickListener(v -> finish());
     }
 
     @Override

@@ -11,18 +11,16 @@
         android:id="@+id/logoutButton"
         android:layout_width="171dp"
         android:layout_height="46dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="4dp"
         android:background="@drawable/button_style"
         android:padding="5dp"
         android:text="Cerrar sesión"
         android:textSize="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/mapButtonContainer"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.012"
+        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/addButton"
+        app:layout_constraintVertical_bias="0.48" />
 
     <LinearLayout
         android:id="@+id/mapButton"
@@ -36,9 +34,9 @@
         android:padding="16dp"
         app:layout_constraintDimensionRatio="1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.558"
+        app:layout_constraintHorizontal_bias="0.176"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="78dp">
+        tools:layout_editor_absoluteY="26dp">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -91,7 +89,7 @@
         android:id="@+id/addButton"
         android:layout_width="377dp"
         android:layout_height="170dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/button_style"
         android:clickable="true"
         android:focusable="true"
@@ -102,10 +100,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listButton"
-        app:layout_constraintVertical_bias="0.263">
+        app:layout_constraintVertical_bias="0.034">
 
         <ImageView
             android:layout_width="wrap_content"

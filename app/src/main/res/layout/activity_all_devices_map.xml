@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".All_devices_map">
 
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="34dp"
+        android:layout_height="36dp"
+        android:background="@drawable/ic_back_foreground"
+        android:padding="12dp"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="37dp" />
+
     <fragment
         android:id="@+id/allDevicesMapFragment"
         android:name="com.google.android.gms.maps.SupportMapFragment"

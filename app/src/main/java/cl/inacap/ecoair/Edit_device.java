@@ -28,6 +28,9 @@ public class Edit_device extends AppCompatActivity {
         editTextPlazaName = findViewById(R.id.editTextPlazaName);
         editTextCo2 = findViewById(R.id.editTextCo2);
         editTextNox = findViewById(R.id.editTextNox);
+        Button backButton = findViewById(R.id.backButton);
+
+        backButton.setOnClickListener(v -> finish());
 
         String deviceId = getIntent().getStringExtra("DEVICE_ID");
         if (deviceId == null) {

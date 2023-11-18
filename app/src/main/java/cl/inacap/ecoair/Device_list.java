@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -35,6 +36,10 @@ public class Device_list extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         devicesList = new ArrayList<>();
         EditText searchEditText = findViewById(R.id.searchEditText);
+        Button backButton = findViewById(R.id.backButton);
+
+        backButton.setOnClickListener(v -> finish());
+
         searchEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

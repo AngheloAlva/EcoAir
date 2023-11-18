@@ -42,12 +42,13 @@ public class Add_device extends AppCompatActivity implements OnMapReadyCallback 
         mapFragment.getMapAsync((OnMapReadyCallback) this);
 
         Button saveDeviceButton = findViewById(R.id.saveDeviceButton);
-        saveDeviceButton.setOnClickListener(v -> saveDevice());
+        Button uploadImageButton = findViewById(R.id.btnUploadImage);
+        Button backButton = findViewById(R.id.backButton);
 
         ivDeviceImage = findViewById(R.id.ivDeviceImage);
-        Button uploadImageButton = findViewById(R.id.btnUploadImage);
-
         uploadImageButton.setOnClickListener(v -> openGallery());
+        saveDeviceButton.setOnClickListener(v -> saveDevice());
+        backButton.setOnClickListener(v -> finish());
     }
 
     public void onMapReady(@NonNull GoogleMap googleMap) {

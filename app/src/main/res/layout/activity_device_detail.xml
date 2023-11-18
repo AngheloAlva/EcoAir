@@ -10,10 +10,18 @@
         android:orientation="vertical"
         android:padding="8dp">
 
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="34dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/ic_back_foreground"
+            android:padding="12dp" />
+
         <ImageView
             android:id="@+id/ivDeviceImage"
-            android:layout_width="273dp"
-            android:layout_height="185dp"
+            android:layout_width="189dp"
+            android:layout_height="175dp"
             android:contentDescription="@string/device_image"
             android:scaleType="centerCrop" />
 
