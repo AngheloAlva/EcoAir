@@ -50,7 +50,10 @@ public class Device_list extends AppCompatActivity {
                 devicesList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Device device = snapshot.getValue(Device.class);
-                    devicesList.add(device);
+                    if (device != null) {
+                        device.setFirebaseKey(snapshot.getKey());
+                        devicesList.add(device);
+                    }
                 }
                 adapter.notifyDataSetChanged();
             }

@@ -91,6 +91,7 @@ public class Login extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
+                        Toast.makeText(Login.this, "Inicio de sesión con Google exitoso", Toast.LENGTH_SHORT).show();
                         FirebaseUser user = mAuth.getCurrentUser();
                         if (user != null) {
                             DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
@@ -101,7 +102,7 @@ public class Login extends AppCompatActivity {
                         updateUI(user);
                     } else {
                         // If sign in fails, display a message to the user.
-                        Toast.makeText(Login.this, "Autenticación de Firebase fallida.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "Inicio de sesión con Google fallido: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         updateUI(null);
                     }
                 });
@@ -186,12 +187,12 @@ public class Login extends AppCompatActivity {
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                                    Toast.makeText(Login.this, "Error al leer los datos.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Login.this, "Error al leer los datos del usuario." + task.getException(), Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
                     } else {
-                        Toast.makeText(Login.this, "Inicio de sesión fallido.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "Inicio de sesión fallido: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }

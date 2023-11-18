@@ -31,13 +31,6 @@ public class Device_detail extends AppCompatActivity implements OnMapReadyCallba
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_detail);
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-
-        if (mapFragment != null) {
-            mapFragment.getMapAsync(this);
-        }
-
         deviceID = getIntent().getStringExtra("DEVICE_ID");
         if (deviceID == null) {
             Toast.makeText(this, "No se encontro el ID del dispositivo", Toast.LENGTH_SHORT).show();
@@ -45,10 +38,28 @@ public class Device_detail extends AppCompatActivity implements OnMapReadyCallba
             return;
         }
 
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.mapFragment);
+
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(this);
+        }
+    }
+
+    @Override
+    public void onMapReady (@NonNull GoogleMap googleMap) {
+        map = googleMap;
         loadDeviceDetails();
     }
 
     private void loadDeviceDetails() {
+        String deviceKey = getIntent().getStringExtra("DEVICE_ID");
+        if (deviceKey == null) {
+            Toast.makeText(this, "No se encontro el ID del dispositivo", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
         DatabaseReference deviceRef = FirebaseDatabase.getInstance().getReference("devices").child(deviceID);
 
         deviceRef.addValueEventListener(new ValueEventListener() {
@@ -69,11 +80,6 @@ public class Device_detail extends AppCompatActivity implements OnMapReadyCallba
         });
     }
 
-    @Override
-    public void onMapReady (@NonNull GoogleMap googleMap) {
-        map = googleMap;
-    }
-
     private void updateUI(Device device) {
         ImageView ivDeviceImage = findViewById(R.id.ivDeviceImage);
         TextView tvDeviceName = findViewById(R.id.tvDeviceName);
@@ -81,6 +87,7 @@ public class Device_detail extends AppCompatActivity implements OnMapReadyCallba
         TextView tvCo2 = findViewById(R.id.tvCO2Level);
         TextView tvNox = findViewById(R.id.tvNOxLevel);
         TextView tvAirQuality = findViewById(R.id.tvAirQuality);
+        TextView latLng = findViewById(R.id.latLngTextView);
         String airQualityState = calculateAirQualityState(device.getCo2(), device.getNox());
         tvAirQuality.setText("Calidad del aire: " + airQualityState);
 
@@ -98,10 +105,17 @@ public class Device_detail extends AppCompatActivity implements OnMapReadyCallba
         tvCo2.setText("Nivel de CO2: " + device.getCo2() + " ppm");
         tvNox.setText("Nivel de NOx: " + device.getNox() + " ppm");
 
-        if (map != null) {
+        Toast.makeText(this, "Latitud: " + device.getLatitude() + ", Longitud: " + device.getLongitude(), Toast.LENGTH_SHORT).show();
+
+        latLng.setText("Latitud: " + device.getLatitude() + ", Longitud: " + device.getLongitude());
+        if (device.getLatitude() != 0 && device.getLongitude() != 0) {
             LatLng deviceLocation = new LatLng(device.getLatitude(), device.getLongitude());
-            map.addMarker(new MarkerOptions().position(deviceLocation).title("Ubicación del dispositivo"));
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(deviceLocation, 15));
+            if (map != null) {
+                map.addMarker(new MarkerOptions().position(deviceLocation).title("Ubicación del dispositivo"));
+                map.moveCamera(CameraUpdateFactory.newLatLngZoom(deviceLocation, 15));
+            }
+        } else {
+            Toast.makeText(this, "Ubicación no disponible.", Toast.LENGTH_SHORT).show();
         }
     }
 

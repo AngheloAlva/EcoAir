@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,7 +16,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceViewHolder> {
-    private List<Device> devicesList; // Lista de dispositivos para mostrar
+    private final List<Device> devicesList; // Lista de dispositivos para mostrar
 
     // Constructor del adaptador
     public DeviceAdapter(List<Device> devicesList) {
@@ -50,7 +51,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceView
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(holder.itemView.getContext(), Device_detail.class);
-            intent.putExtra("DEVICE_ID", device.getDeviceID());
+            intent.putExtra("DEVICE_ID", device.getFirebaseKey());
             holder.itemView.getContext().startActivity(intent);
         });
     }

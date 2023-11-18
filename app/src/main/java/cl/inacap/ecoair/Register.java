@@ -94,12 +94,11 @@ public class Register extends AppCompatActivity {
                                         finish();
                                     })
                                     .addOnFailureListener(e -> {
-                                        Toast.makeText(Register.this, "Fallo al guardar los datos del usuario.", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(Register.this, "Fallo al guardar los datos del usuario." + task.getException(), Toast.LENGTH_SHORT).show();
                                     });
                         }
                     } else {
-                        Toast.makeText(Register.this, "Registro fallado.",
-                                Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Register.this, "Registro fallido: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }

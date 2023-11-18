@@ -22,72 +22,45 @@
         android:layout_width="0dp" />
 
     <ImageButton
-        android:id="@+id/mapButton"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:background="@drawable/button_style"
-        android:src="@drawable/ic_map_foreground"
-        app:layout_constraintBottom_toTopOf="@+id/horizontalGuideline"
-        app:layout_constraintDimensionRatio="1"
-        app:layout_constraintEnd_toStartOf="@+id/verticalGuideline"
-        app:layout_constraintHorizontal_bias="0.694"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchEditText"
-        app:layout_constraintVertical_bias="0.814" />
-
-    <ImageButton
         android:id="@+id/listButton"
-        android:layout_width="170dp"
+        android:layout_width="377dp"
         android:layout_height="170dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/button_style"
         android:src="@drawable/ic_list_foreground"
-        app:layout_constraintBottom_toTopOf="@+id/horizontalGuideline"
         app:layout_constraintDimensionRatio="1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
-        app:layout_constraintStart_toEndOf="@id/verticalGuideline"
-        app:layout_constraintTop_toBottomOf="@id/searchEditText"
-        app:layout_constraintVertical_bias="0.814" />
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchEditText" />
+
+    <ImageButton
+        android:id="@+id/mapButton"
+        android:layout_width="377dp"
+        android:layout_height="170dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_style"
+        android:src="@drawable/ic_map_foreground"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listButton" />
 
     <ImageButton
         android:id="@+id/addButton"
-        android:layout_width="170dp"
+        android:layout_width="377dp"
         android:layout_height="170dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="108dp"
         android:background="@drawable/button_style"
         android:src="@drawable/ic_add_foreground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1"
-        app:layout_constraintEnd_toStartOf="@+id/verticalGuideline"
-        app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/horizontalGuideline"
-        app:layout_constraintVertical_bias="0.049" />
-
-    <ImageButton
-        android:id="@+id/deleteButton"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:background="@drawable/button_style"
-        android:src="@drawable/ic_trash_foreground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
-        app:layout_constraintStart_toEndOf="@id/verticalGuideline"
-        app:layout_constraintTop_toBottomOf="@id/horizontalGuideline"
-        app:layout_constraintVertical_bias="0.052" />
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mapButton"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/verticalGuideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5"/>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontalGuideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_end="447dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

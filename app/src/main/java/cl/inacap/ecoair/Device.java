@@ -1,6 +1,7 @@
 package cl.inacap.ecoair;
 
 public class Device {
+    private String firebaseKey;
     private String deviceName;
     private String plazaName;
     private double latitude;
@@ -51,5 +52,13 @@ public class Device {
 
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    public String getFirebaseKey() {
+        return firebaseKey;
+    }
+
+    public void setFirebaseKey(String firebaseKey) {
+        this.firebaseKey = firebaseKey;
     }
 }
