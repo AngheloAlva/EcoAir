@@ -10,8 +10,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="356dp"
-        android:layout_height="328dp"
+        android:layout_width="366dp"
+        android:layout_height="411dp"
         android:layout_margin="16dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
@@ -83,6 +83,13 @@
                 android:layout_gravity="center_horizontal"
                 android:text="@string/or_register_here"
                 android:textColor="@color/text_100" />
+
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/googleSignInButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="8dp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
