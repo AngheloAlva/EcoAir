@@ -40,6 +40,33 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance(); // Inicializar Firebase Auth
+
+        if (mAuth.getCurrentUser() != null) {
+            DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
+            usersRef.child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    User currentUser = dataSnapshot.getValue(User.class);
+                    if (currentUser != null) {
+                        // Redirigir según el rol del usuario
+                        Intent intent;
+                        if ("admin".equals(currentUser.getRole())) {
+                            intent = new Intent(Login.this, Main_admin.class);
+                        } else {
+                            intent = new Intent(Login.this, Main_user.class);
+                        }
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Manejar error
+                }
+            });
+        }
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("789121477936-rhpdb6tku6ocfedkq6q1grh4cup659mr.apps.googleusercontent.com")
                 .requestEmail()

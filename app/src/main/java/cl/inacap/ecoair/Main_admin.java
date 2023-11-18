@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Main_admin extends AppCompatActivity {
     @Override
@@ -16,6 +19,7 @@ public class Main_admin extends AppCompatActivity {
         LinearLayout btnAddDevice = findViewById(R.id.addButton);
         LinearLayout btnMap = findViewById(R.id.mapButton);
         LinearLayout btnEditDevice = findViewById(R.id.listButton);
+        Button logoutBtn = findViewById(R.id.logoutButton);
 
         boolean isAdmin = getIntent().getBooleanExtra("isAdmin", false);
 
@@ -42,6 +46,13 @@ public class Main_admin extends AppCompatActivity {
                 Intent intent = new Intent(Main_admin.this, All_devices_map.class);
                 startActivity(intent);
             }
+        });
+
+        logoutBtn.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(Main_admin.this, Login.class);
+            startActivity(intent);
+            finish();
         });
     }
 }

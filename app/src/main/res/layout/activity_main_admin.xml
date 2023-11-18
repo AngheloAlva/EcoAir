@@ -7,6 +7,23 @@
     android:background="@color/bg_100"
     android:padding="16dp">
 
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="171dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/button_style"
+        android:padding="5dp"
+        android:text="Cerrar sesión"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/mapButtonContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.012"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <LinearLayout
         android:id="@+id/mapButton"
         android:layout_width="377dp"
@@ -19,9 +36,9 @@
         android:padding="16dp"
         app:layout_constraintDimensionRatio="1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.558"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="42dp">
+        tools:layout_editor_absoluteY="78dp">
 
         <ImageView
             android:layout_width="wrap_content"
