@@ -13,7 +13,12 @@
           "package_name": "cl.inacap.ecoair"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "717231755091-9d197oemkcjov9l9p5ffvf3j3h3dl84p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBkqkwlVnCgWutn2JggPJFks2o6d0hHl-Q"
@@ -21,7 +26,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "717231755091-9d197oemkcjov9l9p5ffvf3j3h3dl84p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

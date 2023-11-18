@@ -68,10 +68,9 @@ public class Login extends AppCompatActivity {
         }
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("789121477936-rhpdb6tku6ocfedkq6q1grh4cup659mr.apps.googleusercontent.com")
+                .requestIdToken("5953319461-t1b040h7r8l8jqcdnokaptphbah0b7d5.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
-
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         emailEditText = findViewById(R.id.emailEditText);
