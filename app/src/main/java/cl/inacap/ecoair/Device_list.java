@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +34,25 @@ public class Device_list extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.rvDevices);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         devicesList = new ArrayList<>();
+        EditText searchEditText = findViewById(R.id.searchEditText);
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // No es necesario implementar este método
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (adapter != null) {
+                    adapter.getFilter().filter(s);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // No es necesario implementar este método
+            }
+        });
 
         fetchDevicesFromFirebase();
 
@@ -50,6 +72,10 @@ public class Device_list extends AppCompatActivity {
                         device.setFirebaseKey(snapshot.getKey());
                         devicesList.add(device);
                     }
+                }
+                // Asegúrate de que la lista completa de dispositivos se actualice
+                if (adapter != null) {
+                    adapter.updateDevicesListFull(new ArrayList<>(devicesList));
                 }
                 adapter.notifyDataSetChanged();
             }

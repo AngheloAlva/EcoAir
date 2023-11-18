@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 public class Main_admin extends AppCompatActivity {
     @Override
@@ -13,9 +13,9 @@ public class Main_admin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_admin);
 
-        ImageButton btnAddDevice = findViewById(R.id.addButton);
-        ImageButton btnMap = findViewById(R.id.mapButton);
-        ImageButton btnEditDevice = findViewById(R.id.listButton);
+        LinearLayout btnAddDevice = findViewById(R.id.addButton);
+        LinearLayout btnMap = findViewById(R.id.mapButton);
+        LinearLayout btnEditDevice = findViewById(R.id.listButton);
 
         boolean isAdmin = getIntent().getBooleanExtra("isAdmin", false);
 

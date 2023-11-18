@@ -7,50 +7,35 @@
     android:background="@color/bg_100"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/searchEditText"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/edit_text_style"
-        android:hint="@string/search_hint"
-        android:inputType="text"
-        android:paddingHorizontal="10dp"
-        android:paddingVertical="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="0dp" />
-
     <LinearLayout
-        android:id="@+id/listButton"
+        android:id="@+id/mapButton"
+        android:layout_width="377dp"
+        android:layout_height="170dp"
+        android:background="@drawable/button_style"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="16dp"
-        android:layout_width="377dp"
-        android:layout_height="170dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/button_style"
         app:layout_constraintDimensionRatio="1"
-        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchEditText">
+        tools:layout_editor_absoluteY="42dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_map_foreground"
-            android:layout_marginEnd="10dp"/>
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_map_foreground" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:textSize="35dp"
+            android:text="@string/map"
             android:textColor="@color/text_100"
-            android:text="@string/map" />
+            android:textSize="35dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -59,7 +44,7 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="16dp"
-        android:id="@+id/mapButton"
+        android:id="@+id/listButton"
         android:layout_width="377dp"
         android:layout_height="170dp"
         android:layout_marginTop="20dp"
@@ -68,7 +53,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listButton">
+        app:layout_constraintTop_toBottomOf="@+id/mapButton">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -86,39 +71,38 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/addButton"
+        android:layout_width="377dp"
+        android:layout_height="170dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/button_style"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="16dp"
-        android:id="@+id/addButton"
-        android:layout_width="377dp"
-        android:layout_height="170dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="108dp"
-        android:background="@drawable/button_style"
         android:src="@drawable/ic_add_foreground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mapButton"
-        app:layout_constraintVertical_bias="0.0" >
+        app:layout_constraintTop_toBottomOf="@+id/listButton"
+        app:layout_constraintVertical_bias="0.263">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_add_foreground"
-            android:layout_marginEnd="10dp"/>
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_add_foreground" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:textSize="35dp"
+            android:text="@string/add_device"
             android:textColor="@color/text_100"
-            android:text="@string/add_device" />
+            android:textSize="35dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,16 +18,19 @@ import com.bumptech.glide.Glide;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceViewHolder> {
+public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceViewHolder> implements Filterable {
     private final List<Device> devicesList; // Lista de dispositivos para mostrar
+    private final List<Device> devicesListFull; // Lista de dispositivos completa para el filtro
     private final boolean isAdmin;
 
     // Constructor del adaptador
     public DeviceAdapter(List<Device> devicesList, boolean isAdmin) {
         this.devicesList = devicesList;
         this.isAdmin = isAdmin;
+        devicesListFull = new ArrayList<>(devicesList);
     }
 
     @NonNull
@@ -66,7 +71,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceView
         });
 
         holder.editImageView.setOnClickListener(v -> {
-            Intent intent = new Intent(holder.itemView.getContext(), Add_device.class); // TODO: Cambiar a Edit_device
+            Intent intent = new Intent(holder.itemView.getContext(), Edit_device.class);
             intent.putExtra("DEVICE_ID", device.getFirebaseKey());
             holder.itemView.getContext().startActivity(intent);
         });
@@ -122,5 +127,45 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceView
             editImageView = itemView.findViewById(R.id.editImageView);
             deleteImageView = itemView.findViewById(R.id.deleteImageView);
         }
+    }
+
+    @Override
+    public Filter getFilter() {
+        return deviceFilter;
+    }
+
+    private final Filter deviceFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Device> filteredList = new ArrayList<>();
+
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(devicesListFull);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for (Device device : devicesListFull) {
+                    if (device.getDeviceName().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(device);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            devicesList.clear();
+            devicesList.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
+
+    public void updateDevicesListFull(List<Device> newDevicesListFull) {
+        devicesListFull.clear();
+        devicesListFull.addAll(newDevicesListFull);
     }
 }
