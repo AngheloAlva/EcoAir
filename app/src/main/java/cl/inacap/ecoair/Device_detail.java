@@ -96,11 +96,11 @@ public class Device_detail extends AppCompatActivity implements OnMapReadyCallba
         tvAirQuality.setText("Calidad del aire: " + airQualityState);
 
         if ("Bueno".equals(airQualityState)) {
-            tvAirQuality.setTextColor(getResources().getColor(R.color.green));
+            tvAirQuality.setTextColor(getResources().getColor(R.color.colorGreenLight));
         } else if ("Regular".equals(airQualityState)) {
-            tvAirQuality.setTextColor(getResources().getColor(R.color.yellow));
+            tvAirQuality.setTextColor(getResources().getColor(R.color.colorYellow));
         } else {
-            tvAirQuality.setTextColor(getResources().getColor(R.color.red));
+            tvAirQuality.setTextColor(getResources().getColor(R.color.colorRed));
         }
 
         Glide.with(this).load(device.getImageUrl()).into(ivDeviceImage);

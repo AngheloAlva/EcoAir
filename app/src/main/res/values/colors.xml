@@ -17,5 +17,9 @@
     <color name="colorBlack">#000000</color> <!-- Pure black for texts or UI elements -->
     <color name="colorGrayDark">#343434</color> <!-- Dark grey for UI elements or text -->
     <color name="colorGrayLight">#CCCCCC</color> <!-- Light grey for backgrounds or UI elements -->
+
+    <!--  Yellow and red colors  -->
+    <color name="colorYellow">#FFD700</color> <!-- Yellow for warning indicators -->
+    <color name="colorRed">#FF0000</color> <!-- Red for error indicators -->
 </resources>
 

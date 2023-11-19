@@ -11,7 +11,7 @@
     <string name="or_login">Ya tienes cuenta?</string>
     <string name="or_login_here">Inicia sesión aqui</string>
     <string name="search_hint">Buscar</string>
-    <string name="map">Mapa de plazas</string>
+    <string name="map">Mapa de Dispositivos</string>
     <string name="plaza_list">Lista de plazas</string>
     <string name="device_name">Nombre del dispositivo</string>
     <string name="plaza_name">Nombre de la plaza</string>
@@ -21,4 +21,8 @@
     <string name="device_image">Imagen de la plaza</string>
     <string name="add_device">Agregar dispositivo</string>\
     <string name="save_device">Guardar dispositivo</string>
+    <string name="registration_page">Página de Registro</string>
+    <string name="login_page">Página de Inicio de Sesión</string>
+    <string name="upload_image">Subir imagen</string>
+    <string name="device_list">Lista de dispositivos</string>
 </resources>

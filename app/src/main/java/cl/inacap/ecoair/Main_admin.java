@@ -1,6 +1,7 @@
 package cl.inacap.ecoair;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,9 +17,9 @@ public class Main_admin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_admin);
 
-        LinearLayout btnAddDevice = findViewById(R.id.addButton);
-        LinearLayout btnMap = findViewById(R.id.mapButton);
-        LinearLayout btnEditDevice = findViewById(R.id.listButton);
+        CardView btnAddDevice = findViewById(R.id.addDeviceButtonCard);
+        CardView btnMap = findViewById(R.id.mapButtonCard);
+        CardView btnEditDevice = findViewById(R.id.deviceListButtonCard);
         Button logoutBtn = findViewById(R.id.logoutButton);
 
         boolean isAdmin = getIntent().getBooleanExtra("isAdmin", false);

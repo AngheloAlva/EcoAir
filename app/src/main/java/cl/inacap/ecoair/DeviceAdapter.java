@@ -56,12 +56,12 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceView
             holder.deleteImageView.setVisibility(View.VISIBLE);
         }
 
-        if ("Bueno".equals(airQualityState)) {
-            holder.tvAirQuality.setTextColor(holder.itemView.getContext().getResources().getColor(R.color.green));
+        if ("Buena".equals(airQualityState)) {
+            holder.tvAirQuality.setTextColor(holder.itemView.getContext().getResources().getColor(R.color.colorGreenLight));
         } else if ("Regular".equals(airQualityState)) {
-            holder.tvAirQuality.setTextColor(holder.itemView.getContext().getResources().getColor(R.color.yellow));
+            holder.tvAirQuality.setTextColor(holder.itemView.getContext().getResources().getColor(R.color.colorYellow));
         } else {
-            holder.tvAirQuality.setTextColor(holder.itemView.getContext().getResources().getColor(R.color.red));
+            holder.tvAirQuality.setTextColor(holder.itemView.getContext().getResources().getColor(R.color.colorRed));
         }
 
         holder.itemView.setOnClickListener(v -> {

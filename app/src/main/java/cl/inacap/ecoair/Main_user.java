@@ -1,6 +1,7 @@
 package cl.inacap.ecoair;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,8 +17,8 @@ public class Main_user extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_user);
 
-        LinearLayout btnDeviceList = findViewById(R.id.listButtonContainer);
-        LinearLayout btnMap = findViewById(R.id.mapButtonContainer);
+        CardView btnDeviceList = findViewById(R.id.deviceListButtonCard);
+        CardView btnMap = findViewById(R.id.mapButtonCard);
         Button logoutBtn = findViewById(R.id.logoutButton);
 
         btnDeviceList.setOnClickListener(v -> {

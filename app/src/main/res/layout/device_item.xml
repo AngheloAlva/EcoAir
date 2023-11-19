@@ -1,42 +1,68 @@
-<!-- Ejemplo de item_device.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:layout_height="150dp"
+    android:orientation="horizontal"
+    android:background="@drawable/card_background"
+    android:layout_marginBottom="10dp"
     android:padding="16dp">
 
+    <!-- ImageView para la imagen del dispositivo -->
     <ImageView
         android:id="@+id/ivDeviceImage"
-        android:layout_width="119dp"
-        android:layout_height="113dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center_vertical"
         android:scaleType="centerCrop" />
 
-    <TextView
-        android:id="@+id/tvDeviceName"
-        android:layout_width="wrap_content"
+    <!-- Contenedor vertical para el nombre, el estado y los botones -->
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Nombre del dispositivo"
-        android:textSize="18sp" />
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingStart="16dp">
 
-    <TextView
-        android:id="@+id/tvAirQuality"
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:text="Estado: Bueno"
-        android:textAppearance="?attr/textAppearanceListItemSmall" />
+        <!-- TextView para el nombre del dispositivo -->
+        <TextView
+            android:id="@+id/tvDeviceName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre del dispositivo"
+            android:textSize="20sp" />
 
-    <ImageView
-        android:id="@+id/editImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_edit"
-        android:visibility="gone" />
+        <!-- TextView para el estado del dispositivo -->
+        <TextView
+            android:id="@+id/tvAirQuality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estado: Bueno"
+            android:layout_marginTop="5dp"
+            android:textAppearance="?attr/textAppearanceListItemSmall" />
 
-    <ImageView
-        android:id="@+id/deleteImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_trash_foreground"
-    android:visibility="gone" />
+        <!-- LinearLayout horizontal para los botones de editar y eliminar -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="end">
 
+            <!-- ImageView para editar -->
+            <ImageView
+                android:id="@+id/editImageView"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_edit"
+                android:visibility="gone" />
+
+            <!-- ImageView para eliminar -->
+            <ImageView
+                android:id="@+id/deleteImageView"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_trash_foreground"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
