@@ -81,7 +81,7 @@ public class Login extends AppCompatActivity {
 
         loginButton.setOnClickListener(v -> loginUser());
 
-        TextView registerTextView = findViewById(R.id.registerRedirectTextView);
+        TextView registerTextView = findViewById(R.id.registerTextView);
         registerTextView.setOnClickListener(v -> {
             Intent intent = new Intent(Login.this, Register.class);
             startActivity(intent);
