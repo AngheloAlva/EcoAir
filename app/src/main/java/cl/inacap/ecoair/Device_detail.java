@@ -95,7 +95,7 @@ public class Device_detail extends AppCompatActivity implements OnMapReadyCallba
         String airQualityState = calculateAirQualityState(device.getCo2(), device.getNox());
         tvAirQuality.setText("Calidad del aire: " + airQualityState);
 
-        if ("Bueno".equals(airQualityState)) {
+        if ("Buena".equals(airQualityState)) {
             tvAirQuality.setTextColor(getResources().getColor(R.color.colorGreenLight));
         } else if ("Regular".equals(airQualityState)) {
             tvAirQuality.setTextColor(getResources().getColor(R.color.colorYellow));
