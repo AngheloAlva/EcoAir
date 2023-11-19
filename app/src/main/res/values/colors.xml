@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary_100">#00A896</color>
-    <color name="primary_200">#008b7a</color>
-    <color name="primary_300">#004b3e</color>
-    <color name="accent_100">#48CAE4</color>
-    <color name="accent_200">#006a82</color>
-    <color name="text_100">#333333</color>
-    <color name="text_200">#5c5c5c</color>
-    <color name="bg_100">#F2EFE9</color>
-    <color name="bg_200">#e8e5df</color>
-    <color name="bg_300">#bfbdb7</color>
-    <color name="green">#00A896</color>
-    <color name="red">#FF3D00</color>
-    <color name="yellow">#FFC400</color>
+    <!-- Base application colors -->
+    <color name="colorPrimary">#0D1B2A</color> <!-- Dark blue for the background -->
+    <color name="colorPrimaryDark">#071422</color> <!-- Even darker shade for status bar, etc. -->
+    <color name="colorAccent">#21E1E1</color> <!-- Bright blue for accents and interactive elements -->
+
+    <!-- Additional palette colors -->
+    <color name="colorGreenPositive">#14A76C</color> <!-- Green for positive indicators -->
+    <color name="colorGreenLight">#17B978</color> <!-- Light green for positive UI elements -->
+    <color name="colorBlueLight">#77D8D8</color> <!-- Light blue for buttons or interactive elements -->
+    <color name="colorTextPrimary">#FFFFFF</color> <!-- White for primary text on dark backgrounds -->
+    <color name="colorTextSecondary">#B7B7B7</color> <!-- Light grey for secondary text -->
+
+    <!-- Utility colors -->
+    <color name="colorWhite">#FFFFFF</color> <!-- Pure white for texts or UI elements -->
+    <color name="colorBlack">#000000</color> <!-- Pure black for texts or UI elements -->
+    <color name="colorGrayDark">#343434</color> <!-- Dark grey for UI elements or text -->
+    <color name="colorGrayLight">#CCCCCC</color> <!-- Light grey for backgrounds or UI elements -->
 </resources>
+
