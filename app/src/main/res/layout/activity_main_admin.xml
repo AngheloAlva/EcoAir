@@ -45,7 +45,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/mapButtonCard"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="120dp"
         android:layout_margin="16dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="10dp"
@@ -82,7 +82,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/deviceListButtonCard"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="120dp"
         android:layout_margin="16dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="10dp"
@@ -118,7 +118,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/addDeviceButtonCard"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="120dp"
         android:layout_margin="16dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="10dp"
@@ -148,6 +148,43 @@
                 android:text="Agregar un Dispositivo"
                 android:textSize="24sp"
                 android:textColor="@color/colorGreenLight" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/realDeviceButtonCard"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addDeviceButtonCard">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/card_background"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add_foreground" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:text="Agregar un Dispositivo"
+                android:textColor="@color/colorGreenLight"
+                android:textSize="24sp" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

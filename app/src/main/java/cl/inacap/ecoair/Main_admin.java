@@ -20,6 +20,7 @@ public class Main_admin extends AppCompatActivity {
         CardView btnAddDevice = findViewById(R.id.addDeviceButtonCard);
         CardView btnMap = findViewById(R.id.mapButtonCard);
         CardView btnEditDevice = findViewById(R.id.deviceListButtonCard);
+        CardView realDevice = findViewById(R.id.realDeviceButtonCard);
         Button logoutBtn = findViewById(R.id.logoutButton);
 
         boolean isAdmin = getIntent().getBooleanExtra("isAdmin", false);
@@ -47,6 +48,11 @@ public class Main_admin extends AppCompatActivity {
                 Intent intent = new Intent(Main_admin.this, All_devices_map.class);
                 startActivity(intent);
             }
+        });
+
+        realDevice.setOnClickListener(v -> {
+            Intent intent = new Intent(Main_admin.this, RealDeviceActivity.class);
+            startActivity(intent);
         });
 
         logoutBtn.setOnClickListener(v -> {
