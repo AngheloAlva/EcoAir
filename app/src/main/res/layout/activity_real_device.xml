@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
     tools:context=".RealDeviceActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,6 +36,7 @@
             android:layout_width="253dp"
             android:layout_height="29dp"
             android:text="Detalle del Dispositivo"
+            android:layout_marginStart="10dp"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -56,45 +58,51 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
-        android:layout_width="392dp"
-        android:layout_height="686dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/navbar"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:background="@drawable/card_background"
             app:cardCornerRadius="16dp"
-            app:cardElevation="10dp">
+            app:cardElevation="10dp"
+            android:background="@drawable/card_background">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/card_background"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="20dp">
+                android:background="@drawable/card_background"
+                android:padding="20dp">
 
-                <ImageView
-                    android:id="@+id/ivDeviceImage"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/deviceImageCardView"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:layout_marginBottom="20dp"
-                    android:contentDescription="@string/device_image"
-                    android:scaleType="centerCrop" />
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/ivDeviceImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop" />
+
+                </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:id="@+id/tvDeviceName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Nombre del dispositivo"
+                    android:layout_marginTop="10dp"
                     android:textAppearance="?attr/textAppearanceHeadline6" />
 
                 <TextView
@@ -134,8 +142,8 @@
                     style="@style/Widget.Material3.Button.OutlinedButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:text="Editar Dispositivo"
+                    android:layout_marginTop="16dp"
                     android:textColor="@color/colorGreenPositive" />
 
 
