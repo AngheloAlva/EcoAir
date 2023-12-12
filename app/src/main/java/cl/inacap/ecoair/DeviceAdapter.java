@@ -22,11 +22,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceViewHolder> implements Filterable {
-    private final List<Device> devicesList; // Lista de dispositivos para mostrar
-    private final List<Device> devicesListFull; // Lista de dispositivos completa para el filtro
+    private final List<Device> devicesList;
+    private final List<Device> devicesListFull;
     private final boolean isAdmin;
 
-    // Constructor del adaptador
     public DeviceAdapter(List<Device> devicesList, boolean isAdmin) {
         this.devicesList = devicesList;
         this.isAdmin = isAdmin;

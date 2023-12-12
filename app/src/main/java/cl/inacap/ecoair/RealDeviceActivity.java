@@ -78,7 +78,7 @@ public class RealDeviceActivity extends AppCompatActivity implements OnMapReadyC
                 Double longitude = dataSnapshot.child("longitude").getValue(Double.class);
 
                 Glide.with(RealDeviceActivity.this).load(imageUrl).into(ivDeviceImage);
-                tvCo2.setText("Nivel de CO2: " + co2 + " ppm");
+                tvCo2.setText("Nivel de Gas: " + co2 + " ppm");
                 tvDeviceName.setText(deviceName);
 
                 double co2Value = Double.parseDouble(co2);
@@ -112,7 +112,7 @@ public class RealDeviceActivity extends AppCompatActivity implements OnMapReadyC
         Log.d("RealDeviceActivity", "Updating map location to: lat=" + lat + ", lon=" + lon);
         LatLng deviceLocation = new LatLng(lat, lon);
         if (mMap != null) {
-            mMap.clear(); // Limpia el mapa antes de agregar un nuevo marcador
+            mMap.clear();
             mMap.addMarker(new MarkerOptions().position(deviceLocation).title("Ubicación del Dispositivo"));
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(deviceLocation, 15));
         }

@@ -43,7 +43,6 @@ public class Device_list extends AppCompatActivity {
         searchEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // No es necesario implementar este método
             }
 
             @Override
@@ -55,7 +54,6 @@ public class Device_list extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                // No es necesario implementar este método
             }
         });
 
@@ -78,7 +76,6 @@ public class Device_list extends AppCompatActivity {
                         devicesList.add(device);
                     }
                 }
-                // Asegúrate de que la lista completa de dispositivos se actualice
                 if (adapter != null) {
                     adapter.updateDevicesListFull(new ArrayList<>(devicesList));
                 }

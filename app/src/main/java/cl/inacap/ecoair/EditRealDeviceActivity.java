@@ -61,7 +61,6 @@ public class EditRealDeviceActivity extends AppCompatActivity implements OnMapRe
         saveDeviceButton.setOnClickListener(v -> saveDevice());
         backButton.setOnClickListener(v -> finish());
 
-        // Cargar los datos actuales del dispositivo desde Firebase
         deviceRef = FirebaseDatabase.getInstance().getReference("sensorData");
         loadDeviceDetails();
     }

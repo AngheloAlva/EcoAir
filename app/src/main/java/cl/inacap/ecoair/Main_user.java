@@ -19,6 +19,7 @@ public class Main_user extends AppCompatActivity {
 
         CardView btnDeviceList = findViewById(R.id.deviceListButtonCard);
         CardView btnMap = findViewById(R.id.mapButtonCard);
+        CardView realDevice = findViewById(R.id.realDeviceButtonCard);
         Button logoutBtn = findViewById(R.id.logoutButton);
 
         btnDeviceList.setOnClickListener(v -> {
@@ -28,6 +29,11 @@ public class Main_user extends AppCompatActivity {
 
         btnMap.setOnClickListener(v -> {
             Intent intent = new Intent(Main_user.this, All_devices_map.class);
+            startActivity(intent);
+        });
+
+        realDevice.setOnClickListener(v -> {
+            Intent intent = new Intent(Main_user.this, RealDeviceActivity.class);
             startActivity(intent);
         });
 

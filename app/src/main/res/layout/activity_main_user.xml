@@ -114,7 +114,43 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Botón de cierre de sesión -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/realDeviceButtonCard"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deviceListButtonCard">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/card_background"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_chip_foreground" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:text="Ver dispositivo real"
+                android:textColor="@color/colorGreenLight"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
     <Button
         android:id="@+id/logoutButton"
         style="@style/Widget.Material3.Button.OutlinedButton"

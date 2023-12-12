@@ -118,7 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Nivel de CO2: XX ppm"
+                    android:text="Nivel de Gas: XX ppm"
                     android:textAppearance="?attr/textAppearanceBody1" />
 
                 <androidx.cardview.widget.CardView

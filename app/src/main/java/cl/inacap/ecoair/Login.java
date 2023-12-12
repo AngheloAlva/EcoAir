@@ -39,7 +39,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mAuth = FirebaseAuth.getInstance(); // Inicializar Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
 
         if (mAuth.getCurrentUser() != null) {
             DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
@@ -48,7 +48,6 @@ public class Login extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     User currentUser = dataSnapshot.getValue(User.class);
                     if (currentUser != null) {
-                        // Redirigir según el rol del usuario
                         Intent intent;
                         if ("admin".equals(currentUser.getRole())) {
                             intent = new Intent(Login.this, Main_admin.class);
@@ -97,15 +96,12 @@ public class Login extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Resultado devuelto de iniciar GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
-                // Google Sign In fue exitoso, autenticar con Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account.getIdToken());
             } catch (ApiException e) {
-                // Google Sign In falló, actualizar la interfaz de usuario apropiadamente
                 Toast.makeText(Login.this, "Error al iniciar sesión con Google.", Toast.LENGTH_SHORT).show();
             }
         }
@@ -116,7 +112,6 @@ public class Login extends AppCompatActivity {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        // Sign in success, update UI with the signed-in user's information
                         Toast.makeText(Login.this, "Inicio de sesión con Google exitoso", Toast.LENGTH_SHORT).show();
                         FirebaseUser user = mAuth.getCurrentUser();
                         if (user != null) {
@@ -127,7 +122,6 @@ public class Login extends AppCompatActivity {
                         }
                         updateUI(user);
                     } else {
-                        // If sign in fails, display a message to the user.
                         Toast.makeText(Login.this, "Inicio de sesión con Google fallido: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         updateUI(null);
                     }
@@ -191,7 +185,6 @@ public class Login extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser firebaseUser = mAuth.getCurrentUser();
-                        // Verificamos el rol del usuario después de iniciar sesión exitosamente
                         if (firebaseUser != null) {
                             DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
                             usersRef.child(firebaseUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -202,10 +195,8 @@ public class Login extends AppCompatActivity {
                                     boolean isAdmin = currentUser != null && "admin".equals(currentUser.getRole());
 
                                     if (isAdmin) {
-                                        // El usuario es un administrador
                                         intent = new Intent(Login.this, Main_admin.class);
                                     } else {
-                                        // El usuario es un usuario normal
                                         intent = new Intent(Login.this, Main_user.class);
                                     }
                                     intent.putExtra("isAdmin", isAdmin);
