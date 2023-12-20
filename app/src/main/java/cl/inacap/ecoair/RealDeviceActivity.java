@@ -73,16 +73,16 @@ public class RealDeviceActivity extends AppCompatActivity implements OnMapReadyC
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String imageUrl = dataSnapshot.child("imageUrl").getValue(String.class);
                 String deviceName = dataSnapshot.child("name").getValue(String.class);
-                String co2 = dataSnapshot.child("CO2").getValue(String.class);
+                String gas = dataSnapshot.child("GAS").getValue(String.class);
                 Double latitude = dataSnapshot.child("latitude").getValue(Double.class);
                 Double longitude = dataSnapshot.child("longitude").getValue(Double.class);
 
                 Glide.with(RealDeviceActivity.this).load(imageUrl).into(ivDeviceImage);
-                tvCo2.setText("Nivel de Gas: " + co2 + " ppm");
+                tvCo2.setText("Nivel de Gas: " + gas + " ppm");
                 tvDeviceName.setText(deviceName);
 
-                double co2Value = Double.parseDouble(co2);
-                if (co2Value >= 125.00 && co2Value <= 135.00) {
+                double co2Value = Double.parseDouble(gas);
+                if (co2Value >= 10.00 && co2Value <= 100.00) {
                     tvAirQuality.setText("Calidad del aire: Normal");
                     tvAirQuality.setTextColor(getResources().getColor(R.color.colorGreenLight));
                 } else {

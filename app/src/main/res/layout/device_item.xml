@@ -28,6 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nombre del dispositivo"
+            android:textColor="@color/colorPrimary"
             android:textSize="20sp" />
 
         <!-- TextView para el estado del dispositivo -->
@@ -35,6 +36,7 @@
             android:id="@+id/tvAirQuality"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
             android:text="Estado: Bueno"
             android:layout_marginTop="5dp"
             android:textAppearance="?attr/textAppearanceListItemSmall" />

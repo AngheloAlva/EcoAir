@@ -100,6 +100,7 @@
                 <TextView
                     android:id="@+id/tvDeviceName"
                     android:layout_width="wrap_content"
+                    android:textColor="@color/colorPrimary"
                     android:layout_height="wrap_content"
                     android:text="Nombre del dispositivo"
                     android:layout_marginTop="10dp"
@@ -109,6 +110,7 @@
                     android:id="@+id/tvAirQuality"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
                     android:layout_marginTop="10dp"
                     android:text="Calidad del aire: XX"
                     android:textAppearance="?attr/textAppearanceBody1" />
@@ -117,6 +119,7 @@
                     android:id="@+id/tvCO2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
                     android:layout_marginTop="10dp"
                     android:text="Nivel de Gas: XX ppm"
                     android:textAppearance="?attr/textAppearanceBody1" />
